@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}AI健康管理平台{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    {% block head_extra %}{% endblock %}
+</head>
+<body>
+    <div class="page-wrapper">
+
+        <header class="site-header">
+            <div class="container header-container"> {# 使用内部容器控制宽度和对齐 #}
+                <div class="logo-area">
+                    {# 这里可以放Logo图片或文字标题 #}
+                    <a href="{{ url_for('index') }}" class="site-logo">AI健康平台</a> {# 指向首页 #}
+                </div>
+
+                <nav class="main-navigation" role="navigation" aria-label="主导航">
+                    <button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false">菜单</button> {# 用于移动端菜单切换 (JS控制) #}
+                    <ul id="primary-menu" class="nav-menu">
+                        {# 使用 url_for 生成链接，request.endpoint 用于判断当前活动页面 #}
+                        <li class="{{ 'active' if request.endpoint == 'index' else '' }}"><a href="{{ url_for('index') }}">首页/Demo</a></li>
+                        <li class="{{ 'active' if request.endpoint == 'about_page' else '' }}"><a href="{{ url_for('about_page') }}">关于我们</a></li>
+                        {# 假设您在app.py中添加了how_it_works_page路由 #}
+                        <li class="{{ 'active' if request.endpoint == 'how_it_works_page' else '' }}"><a href="{{ url_for('how_it_works_page', _external=False) }}">工作原理</a></li>
+                        {# 假设您在app.py中添加了features_page路由 #}
+                        <li class="{{ 'active' if request.endpoint == 'features_page' else '' }}"><a href="{{ url_for('features_page', _external=False) }}">功能特性</a></li>
+                        <li class="{{ 'active' if request.endpoint == 'team_page' else '' }}"><a href="{{ url_for('team_page') }}">团队介绍</a></li>
+                        {# 假设您在app.py中添加了contact_page路由 #}
+                        <li class="{{ 'active' if request.endpoint == 'contact_page' else '' }}"><a href="{{ url_for('contact_page', _external=False) }}">联系我们</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main id="main-content" role="main">
+            <div class="container"> {# 页面主要内容也放在容器内 #}
+                {# 页面特定标题块 (可选，如果希望标题在主体内容区内) #}
+                <div class="page-header">
+                     <h1>{% block page_title %}AI个性化健康管理平台{% endblock %}</h1>
+                     {% block header_subtitle %}{% endblock %} {# 副标题可以放在这里或header里 #}
+                </div>
+                {# 主要内容块，由子模板填充 #}
+                {% block content %}{% endblock %}
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <div class="container"> {# 页脚内容也放在容器内 #}
+                {# 可以将页脚内容分成几列 #}
+                <div class="footer-widgets">
+                    <div class="widget">
+                        <h4>关于我们</h4>
+                        <p>一个致力于通过AI改善健康的平台...</p> {# 简短介绍 #}
+                    </div>
+                    <div class="widget">
+                        <h4>快速链接</h4>
+                        <ul> {# 可以重复导航链接或放其他链接 #}
+                             <li><a href="{{ url_for('index') }}">首页</a></li>
+                             <li><a href="{{ url_for('about_page') }}">关于</a></li>
+                             {# ... #}
+                        </ul>
+                    </div>
+                    <div class="widget">
+                        <h4>联系方式</h4>
+                        {# 使用 include 或直接写在这里 #}
+                        {% include 'footer_content.html' ignore missing %}
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                     <p>&copy; 2025 [您的团队名称或项目名称] 版权所有</p>
+                </div>
+            </div>
+        </footer>
+
+    </div> <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

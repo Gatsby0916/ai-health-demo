@@ -1,0 +1,37 @@
+{% extends "base.html" %} {# 继承 base.html #}
+
+{# --- 可选：覆盖 base.html 中的块 --- #}
+
+{% block title %}AI健康管理平台 - 首页Demo{% endblock %} {# 设置此页面的标题 #}
+
+{% block page_title %}AI个性化健康管理平台 - Demo{% endblock %} {# 设置此页面的主H1标题 #}
+
+{% block header_subtitle %}<p>输入您的健康相关描述，获取AI的个性化建议。</p>{% endblock %} {# 设置此页面的副标题 #}
+
+{# --- 主要内容块 --- #}
+{% block content %}
+    {# 这里只放置 index.html 页面独有的主要内容 #}
+    {# 即输入区域和结果区域 #}
+
+    <div class="input-area">
+        <label for="userInput">请输入您的描述：</label>
+        <textarea id="userInput" rows="5" placeholder="例如：最近工作压力大，晚上总是失眠..."></textarea>
+        <button type="button" id="submitBtn">获取AI建议</button>
+    </div>
+
+    <div class="results-area">
+        <h2>分析结果：</h2>
+        {# 加载动画 Spinner #}
+        <div class="loading-spinner" id="loadingSpinner" style="display: none;"></div>
+        {# 结果显示区域 #}
+        <div id="results">
+            </div>
+    </div>
+
+{% endblock %} {# content 块结束 #}
+
+
+{# --- 可选：如果此页面需要额外的JS --- #}
+{% block scripts %}
+    {# <script> console.log("首页特定的JS已加载"); </script> #}
+{% endblock %}

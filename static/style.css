@@ -1,0 +1,636 @@
+/* static/style.css - 最终合并版 */
+
+/* --- 字体引入 --- */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+/* --- CSS 变量定义 --- */
+:root {
+    --primary-color: #020888;      /* 主题蓝 */
+    --primary-hover-color: #485ab5; /* 主题蓝悬停 */
+    --secondary-color: #d2e0f6;    /* 页面背景色 */
+    --content-bg-color: #ffffff;   /* 内容容器背景色 */
+    --results-bg-color: #eef2f7;   /* 结果区背景 */
+    --text-color: #333;            /* 主要文字 */
+    --text-light-color: #6c757d;   /* 次要/辅助文字 */
+    --border-color: #dee2e6;       /* 边框 */
+    --white-color: #ffffff;
+    --success-color: #28a745;      /* 成功色 (可选) */
+    --error-color: #dc3545;       /* 错误色 (可选) */
+    --link-color: var(--primary-hover-color); /* 链接颜色 */
+}
+
+/* --- 全局与基础样式 --- */
+/* --- 全局与基础样式 --- */
+body {
+    font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-weight: 400;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    /* background-color: var(--secondary-color); */ /* 旧的背景色注释掉 */
+    /* background: linear-gradient(to bottom right, #ffffff, #eef2f7, #f5f7fa); */ /* 旧的渐变注释掉 */
+
+    /* !! 应用您指定的新渐变背景 !! */
+    background: linear-gradient(to bottom right, #f3bcbc, #12509d, #f3bcbc);
+
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6, button, label {
+    font-weight: 500; /* 标题和重要元素使用稍粗字重 */
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+/* --- 容器与布局 --- */
+.page-wrapper { /* 用于包裹整个页面内容 */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.container {
+    max-width: 960px; /* 可以适当加宽 */
+    margin: 0 auto;   /* 移除上下边距，由各部分自己控制 */
+    padding: 0 20px;  /* 左右内边距 */
+    width: 100%;
+    box-sizing: border-box;
+}
+.header-container,
+main > .container, /* 直接子元素 */
+.footer-container {
+    max-width: 960px; /* 内容区域保持一致宽度 */
+    margin: 0 auto;
+    padding: 0 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+main > .container {
+     padding-top: 40px;    /* 主内容区上内边距 */
+     padding-bottom: 40px; /* 主内容区下内边距 */
+     background-color: var(--content-bg-color); /* 主内容区的背景 */
+     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+     border-radius: 10px; /* 圆角 */
+     margin-top: 0;    /* 移除之前的上下外边距 */
+     margin-bottom: 40px; /* 确保和footer有间距 */
+     flex-grow: 1; /* 让main的内容区可以撑开 */
+}
+
+
+/* --- 页眉样式 --- */
+.site-header {
+    padding: 15px 0;
+    background-color: var(--primary-color); /* 主题蓝色背景 */
+    color: var(--white-color);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky; /* 吸顶效果 */
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+}
+
+.site-header .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.site-header .logo-area .site-logo {
+    color: var(--white-color);
+    text-decoration: none;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.site-header .logo-area .site-logo img {
+    max-height: 40px;
+    vertical-align: middle;
+}
+
+/* --- 导航样式 --- */
+.main-navigation {
+    /* 样式已包含在 .site-header .header-container 的 flex 布局中 */
+}
+
+.main-navigation .nav-menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.main-navigation .nav-menu li {
+    margin: 0 5px; /* 稍微减少间距 */
+}
+
+.main-navigation .nav-menu li a {
+    display: block;
+    padding: 10px 12px; /* 调整padding */
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.85); /* 调整透明度 */
+    font-weight: 500;
+    border-radius: 4px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.main-navigation .nav-menu li a:hover {
+    color: var(--white-color);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.main-navigation .nav-menu li.active a {
+    color: var(--white-color);
+    font-weight: 700;
+    /* border-bottom: 2px solid var(--white-color); */ /* 换种高亮方式 */
+    /* padding-bottom: 8px; */
+     background-color: rgba(255, 255, 255, 0.15); /* 活动项加背景 */
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 8px 10px;
+    cursor: pointer;
+    color: var(--white-color);
+    border-radius: 4px;
+}
+
+/* --- 主体内容区通用样式 --- */
+main .container .page-header {
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+main .container .page-header h1 {
+    color: var(--primary-color);
+    margin-bottom: 5px;
+    font-size: 2em; /* 主标题加大 */
+}
+
+main .container h2 {
+    margin-top: 35px; /* 加大标题上间距 */
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--primary-color); /* 底线用主题色 */
+    color: var(--primary-hover-color);
+    font-size: 1.6em;
+}
+
+main .container h3 {
+    margin-top: 25px;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+    font-size: 1.3em;
+}
+
+main .container p {
+    margin-bottom: 15px;
+    color: #555;
+    /* text-align: justify; */ /* 两端对齐有时不好看，先注释掉 */
+}
+
+main .container ul,
+main .container ol {
+    padding-left: 25px;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+main .container li {
+    margin-bottom: 8px;
+}
+
+.page-section {
+    margin-bottom: 40px;
+}
+.page-section:last-child {
+    margin-bottom: 0;
+}
+
+/* --- 输入区域样式 (首页 Demo) --- */
+.input-area {
+    margin-bottom: 30px;
+}
+
+.input-area label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.input-area textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 1em;
+    min-height: 120px; /* 稍微加高一点 */
+    box-sizing: border-box;
+    resize: vertical;
+    font-family: inherit;
+}
+
+.input-area textarea:focus {
+    border-color: var(--primary-color);
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(74, 144, 226, 0.25);
+}
+
+.input-area button {
+    display: inline-block; /* 改为inline-block方便布局 */
+    margin-top: 15px;
+    padding: 12px 30px; /* 加宽 */
+    font-size: 1.05em; /* 稍大 */
+    font-weight: bold;
+    color: var(--white-color);
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.input-area button:hover {
+    background-color: var(--primary-hover-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
+}
+
+.input-area button:active {
+    transform: scale(0.98) translateY(0);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.input-area button:disabled {
+    background-color: var(--text-light-color);
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+/* --- 结果区域样式 (首页 Demo) --- */
+.results-area {
+    margin-top: 30px;
+}
+
+.results-area h2 {
+    /* 使用上面的 main .container h2 样式 */
+}
+
+/* --- 加载动画 Spinner (首页 Demo) --- */
+.loading-spinner {
+    border: 4px solid rgba(0, 0, 0, 0.1);
+    border-left-color: var(--primary-color);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: 30px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* --- 结果显示区域 #results (首页 Demo) --- */
+#results {
+    background-color: var(--results-bg-color);
+    padding: 25px; /* 加大padding */
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    min-height: 150px;
+    white-space: pre-wrap;
+    color: var(--text-color);
+    overflow-y: auto;
+    max-height: 500px; /* 允许更高 */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    line-height: 1.7; /* 结果区域行高也加大 */
+}
+
+#results.visible {
+    opacity: 1;
+}
+#results p:first-child { margin-top: 0; } /* 移除结果区第一个段落的上边距 */
+#results p:last-child { margin-bottom: 0; } /* 移除结果区最后一个段落的下边距 */
+
+
+/* --- Feature Page Styles --- */
+/* --- Feature Page Styles --- */
+.features-list {
+    display: grid;
+    /* !! 修改这里：强制设置为2列，每列等宽 !! */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-top: 20px;
+    /* 可以考虑给整个grid加一个最大宽度，避免在大屏幕上两列拉得太开 */
+    /* max-width: 700px; */ /* (可选) */
+    /* margin-left: auto; */ /* (可选, 配合max-width居中) */
+    /* margin-right: auto; */ /* (可选, 配合max-width居中) */
+}
+
+.feature-item {
+    background-color: var(--secondary-color);
+    padding: 25px 20px;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.feature-item:hover {
+     transform: translateY(-5px);
+     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+.feature-icon {
+    max-width: 50px;
+    height: 50px;
+    margin-bottom: 15px;
+    opacity: 0.8;
+}
+
+.feature-item h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.feature-item p {
+    font-size: 0.9em;
+    color: var(--text-light-color);
+    text-align: center;
+}
+
+/* --- Team Page Styles --- */
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.team-member-card {
+    background-color: var(--white-color);
+    padding: 25px;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.team-member-card:hover {
+     transform: translateY(-5px);
+     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.team-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 15px auto;
+    border: 4px solid var(--white-color);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    display: block;
+}
+
+.team-member-card h3 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    color: var(--primary-color);
+    font-size: 1.2em;
+}
+
+.team-role {
+    font-size: 0.95em;
+    color: var(--text-light-color);
+    margin-bottom: 15px;
+    font-weight: 500;
+    display: block;
+}
+
+.team-contact p {
+     margin: 5px 0;
+     font-size: 0.9em;
+}
+
+.team-contact a {
+     color: var(--link-color);
+}
+
+ .team-contact a:hover {
+     text-decoration: underline;
+ }
+
+ .team-bio {
+    font-size: 0.9em;
+    color: var(--text-color);
+    margin-top: 15px;
+    text-align: left;
+    border-top: 1px dashed var(--border-color);
+    padding-top: 15px;
+}
+
+/* --- Contact Page Styles --- */
+.contact-details p {
+    margin-bottom: 10px;
+}
+.contact-details strong {
+    color: var(--primary-color);
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: inherit;
+    font-size: 1em;
+}
+.contact-form textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+.contact-form button[type="submit"] {
+    padding: 12px 25px;
+    font-size: 1em;
+    font-weight: bold;
+    color: var(--white-color);
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+ .contact-form button[type="submit"]:hover {
+     background-color: var(--primary-hover-color);
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+ }
+
+
+/* --- 页脚样式 --- */
+.site-footer { /* 改为 class 选择器，匹配 base.html */
+    margin-top: auto; /* 让页脚在内容不足时也能沉底 */
+    text-align: center;
+    font-size: 0.9em;
+    color: var(--text-light-color);
+    padding: 30px 0; /* 加大padding */
+    background-color: #e9ecef; /* 给页脚一个稍深的背景 */
+    border-top: 1px solid var(--border-color);
+    width: 100%; /* 确保宽度100% */
+}
+
+.site-footer .footer-widgets { /* 页脚小部件区域 */
+    display: flex;
+    justify-content: space-around; /* 分散对齐 */
+    flex-wrap: wrap;
+    gap: 20px; /* 组件间距 */
+    margin-bottom: 20px;
+    text-align: left; /* 组件内左对齐 */
+}
+
+.site-footer .widget {
+    flex: 1; /* 允许伸缩 */
+    min-width: 200px; /* 最小宽度 */
+}
+
+.site-footer .widget h4 {
+    color: var(--text-color);
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+.site-footer .widget ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.site-footer .widget li {
+    margin-bottom: 5px;
+}
+.site-footer .widget a {
+    color: var(--text-light-color); /* 页脚链接用浅色 */
+}
+.site-footer .widget a:hover {
+    color: var(--link-color); /* 悬停时变亮 */
+    text-decoration: underline;
+}
+
+.site-footer .footer-bottom { /* 版权信息行 */
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.85em;
+}
+
+
+/* --- 响应式调整 --- */
+@media (max-width: 768px) { /* 中等屏幕 */
+    .container,
+    .site-header .header-container,
+    main > .container,
+    .site-footer .footer-container /* 确保所有容器内边距一致 */
+    {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .main-navigation .menu-toggle {
+        display: block; /* 显示菜单按钮 */
+        /* margin: 0 auto 10px auto; */ /* 调整按钮位置，可能放在header一侧更好 */
+        position: absolute; /* 尝试绝对定位到右上角 */
+        top: 15px; /* 根据header高度调整 */
+        right: 20px;
+    }
+    .main-navigation .nav-menu {
+        display: none; /* 隐藏原始菜单列表 */
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        background-color: var(--primary-hover-color); /* 展开时深色背景 */
+        position: absolute;
+        top: 100%; /* 紧贴header下方 */
+        left: 0;
+        right: 0;
+        z-index: 999;
+        padding: 10px 0;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+     }
+     .main-navigation .nav-menu.toggled-on { /* 当菜单被JS打开时 */
+         display: flex;
+     }
+     .main-navigation .nav-menu li {
+         margin: 5px 0;
+     }
+     .main-navigation .nav-menu li a {
+         padding: 12px 15px;
+         color: var(--white-color); /* 移动端菜单文字用白色 */
+     }
+     .main-navigation .nav-menu li.active a {
+         border-bottom: none;
+         background-color: rgba(255, 255, 255, 0.1);
+     }
+
+     .site-footer .footer-widgets {
+         flex-direction: column; /* 移动端页脚小部件垂直排列 */
+         text-align: center; /* 居中 */
+     }
+     .site-footer .widget {
+         margin-bottom: 20px;
+     }
+}
+
+@media (max-width: 600px) { /* 小屏幕 */
+     main > .container {
+         margin: 20px 0px; /* 移除左右外边距 */
+         padding: 20px;
+         border-radius: 0; /* 可以移除圆角 */
+         box-shadow: none; /* 可以移除阴影 */
+     }
+    header h1, main .container .page-header h1 {
+        font-size: 1.8em;
+    }
+    main .container h2 { font-size: 1.4em; }
+    main .container h3 { font-size: 1.15em; }
+
+    .input-area button,
+    .contact-form button[type="submit"] {
+        width: 100%; /* 移动端按钮占满宽度 */
+        padding: 15px; /* 增大点击区域 */
+    }
+
+    .features-list, .team-grid {
+        grid-template-columns: 1fr; /* 小屏幕下单列显示 */
+        gap: 20px;
+    }
+}
