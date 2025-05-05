@@ -1,37 +1,70 @@
-{% extends "base.html" %} {# 继承 base.html #}
+{% extends "base.html" %}
 
-{# --- 可选：覆盖 base.html 中的块 --- #}
+{% block title %}AI健康管理平台 - 首页Demo{% endblock %}
+{% block page_title %}AI个性化健康管理平台 - Demo{% endblock %}
+{% block header_subtitle %}<p>输入您的健康相关描述，获取AI的个性化建议。</p>{% endblock %}
 
-{% block title %}AI健康管理平台 - 首页Demo{% endblock %} {# 设置此页面的标题 #}
-
-{% block page_title %}AI个性化健康管理平台 - Demo{% endblock %} {# 设置此页面的主H1标题 #}
-
-{% block header_subtitle %}<p>输入您的健康相关描述，获取AI的个性化建议。</p>{% endblock %} {# 设置此页面的副标题 #}
-
-{# --- 主要内容块 --- #}
 {% block content %}
-    {# 这里只放置 index.html 页面独有的主要内容 #}
-    {# 即输入区域和结果区域 #}
+  <!-- 1. Hero 全屏区 -->
+  <section id="hero" class="hero-section">
+    <div class="hero-content container">
+      <h1>AI 驱动的个性化健康管理</h1>
+      <p>让科技伴您每一步，从今天起拥抱更好的自己</p>
+      <a href="#demo" class="btn btn-primary">立即体验 Demo</a>
+      <div class="scroll-indicator" onclick="scrollToSection('#demo')">⌄</div>
+    </div>
+  </section>
 
+  <!-- 2. Demo / 输入区 -->
+  <section id="demo" class="input-demo-section fade-in-section container">
     <div class="input-area">
-        <label for="userInput">请输入您的描述：</label>
-        <textarea id="userInput" rows="5" placeholder="例如：最近工作压力大，晚上总是失眠..."></textarea>
-        <button type="button" id="submitBtn">获取AI建议</button>
+      <label for="userInput">请输入您的描述：</label>
+      <textarea id="userInput" rows="5" placeholder="例如：最近工作压力大，晚上总是失眠..."></textarea>
+      <button type="button" id="submitBtn">获取AI建议</button>
     </div>
-
     <div class="results-area">
-        <h2>分析结果：</h2>
-        {# 加载动画 Spinner #}
-        <div class="loading-spinner" id="loadingSpinner" style="display: none;"></div>
-        {# 结果显示区域 #}
-        <div id="results">
-            </div>
+      <h2>分析结果：</h2>
+      <div class="loading-spinner" id="loadingSpinner" style="display: none;"></div>
+      <div id="results"></div>
     </div>
+  </section>
 
-{% endblock %} {# content 块结束 #}
+  <!-- 3. 产品亮点区 -->
+  <section id="features" class="features-overview-section fade-in-section container">
+    <h2>我们的核心功能</h2>
+    <div class="features-list">
+      {% for feature in features %}
+      <div class="feature-item card">
+        <img src="{{ feature.icon }}" alt="{{ feature.title }}" class="feature-icon">
+        <h3>{{ feature.title }}</h3>
+        <p>{{ feature.description }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+{% endblock %}
 
-
-{# --- 可选：如果此页面需要额外的JS --- #}
 {% block scripts %}
-    {# <script> console.log("首页特定的JS已加载"); </script> #}
+  {{ super() }}
+  <script>
+    // 平滑滚动至指定区块
+    function scrollToSection(selector) {
+      document.querySelector(selector)
+        .scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // 分段进入时触发淡入动画
+    document.addEventListener('DOMContentLoaded', () => {
+      const sections = document.querySelectorAll('.fade-in-section');
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      sections.forEach(sec => io.observe(sec));
+    });
+  </script>
 {% endblock %}
