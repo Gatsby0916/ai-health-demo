@@ -329,9 +329,10 @@ main .container h2 {
     color: var(--primary-hover-color);
     font-size: 1.6em;
 }
-.input-demo-section h2 {
-    font-size: 3rem;        /* 小节标题字大一些 */
-    margin-bottom: 20px;
+.input-demo-section h2,
+main .container .page-header h1 {
+  font-size: 3em;    /* 原来是2em，这里改成2.5em */
+  line-height: 1.2;
 }
 .input-demo-section label,
 .input-demo-section p,
@@ -780,7 +781,7 @@ textarea:focus-visible {
          box-shadow: none; /* 可以移除阴影 */
      }
     header h1, main .container .page-header h1 {
-        font-size: 2.5em;
+        font-size: 2.8em;
     }
     main .container h2 { font-size: 1.4em; }
     main .container h3 { font-size: 1.15em; }
