@@ -259,7 +259,7 @@ main > .container {
 
 /* --- 导航样式 --- */
 .main-navigation {
-    /* 样式已包含在 .site-header .header-container 的 flex 布局中 */
+    position: relative;
 }
 
 .main-navigation .nav-menu {

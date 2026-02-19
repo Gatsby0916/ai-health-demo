@@ -1,39 +1,17 @@
 {% extends "base.html" %}
 
-{% block title %}功能特性 - AI健康管理平台{% endblock %}
-
-{% block page_title %}我们提供的服务{% endblock %}
-
-{% block header_subtitle %}<p>探索AI健康管理平台能为您做的。</p>{% endblock %}
+{% block title %}Features - AI Health Platform{% endblock %}
+{% block page_title %}Core Features{% endblock %}
+{% block header_subtitle %}<p>What this demo can do for daily health support.</p>{% endblock %}
 
 {% block content %}
-    <div class="features-list">
-        <div class="feature-item">
-            <img src="{{ url_for('static', filename='images/icon_stress.png') }}" alt="压力管理图标" class="feature-icon"> {# 假设有图标 #}
-            <h3>压力与情绪管理</h3>
-            <p>根据您的描述，分析压力来源和水平，提供针对性的放松技巧、正念练习、时间管理建议等，帮助您缓解压力，改善情绪状态。</p>
-        </div>
-
-        <div class="feature-item">
-            <img src="{{ url_for('static', filename='images/icon_sleep.png') }}" alt="睡眠改善图标" class="feature-icon">
-            <h3>睡眠质量改善</h3>
-            <p>分析影响您睡眠的因素（如作息、睡前习惯、环境等），提供个性化的睡眠卫生建议、作息调整方案，助您获得更好的休息。</p>
-        </div>
-
-        <div class="feature-item">
-            <img src="{{ url_for('static', filename='images/icon_diet.png') }}" alt="饮食建议图标" class="feature-icon">
-            <h3>健康饮食指导</h3>
-            <p>基于您的健康目标（减肥、增肌、均衡营养等）和饮食偏好（概念性，未来可加入），提供合理的餐饮搭配建议、食谱推荐、不良饮食习惯提醒。</p>
-        </div>
-
-         <div class="feature-item">
-            <img src="{{ url_for('static', filename='images/icon_exercise.png') }}" alt="运动规划图标" class="feature-icon">
-            <h3>个性化运动规划</h3>
-            <p>结合您的体能水平、运动偏好和目标，推荐合适的运动类型、强度、频率和时长，提供简单易行的运动方案。</p>
-        </div>
-
-        {# 可以继续添加其他功能特性 #}
+  <div class="features-list">
+    {% for feature in features %}
+    <div class="feature-item card">
+      <img src="{{ feature.icon }}" alt="{{ feature.title }} icon" class="feature-icon">
+      <h3>{{ feature.title }}</h3>
+      <p>{{ feature.description }}</p>
     </div>
-
-
+    {% endfor %}
+  </div>
 {% endblock %}

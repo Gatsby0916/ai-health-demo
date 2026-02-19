@@ -23,13 +23,10 @@
                         {# 使用 url_for 生成链接，request.endpoint 用于判断当前活动页面 #}
                         <li class="{{ 'active' if request.endpoint == 'index' else '' }}"><a href="{{ url_for('index') }}">首页/Demo</a></li>
                         <li class="{{ 'active' if request.endpoint == 'about_page' else '' }}"><a href="{{ url_for('about_page') }}">关于我们</a></li>
-                        {# 假设您在app.py中添加了how_it_works_page路由 #}
-                        <li class="{{ 'active' if request.endpoint == 'how_it_works_page' else '' }}"><a href="{{ url_for('how_it_works_page', _external=False) }}">工作原理</a></li>
-                        {# 假设您在app.py中添加了features_page路由 #}
-                        <li class="{{ 'active' if request.endpoint == 'features_page' else '' }}"><a href="{{ url_for('features_page', _external=False) }}">功能特性</a></li>
+                        <li class="{{ 'active' if request.endpoint == 'how_it_works_page' else '' }}"><a href="{{ url_for('how_it_works_page') }}">工作原理</a></li>
+                        <li class="{{ 'active' if request.endpoint == 'features_page' else '' }}"><a href="{{ url_for('features_page') }}">功能特性</a></li>
                         <li class="{{ 'active' if request.endpoint == 'team_page' else '' }}"><a href="{{ url_for('team_page') }}">团队介绍</a></li>
-                        {# 假设您在app.py中添加了contact_page路由 #}
-                        <li class="{{ 'active' if request.endpoint == 'contact_page' else '' }}"><a href="{{ url_for('contact_page', _external=False) }}">联系我们</a></li>
+                        <li class="{{ 'active' if request.endpoint == 'contact_page' else '' }}"><a href="{{ url_for('contact_page') }}">联系我们</a></li>
                     </ul>
                 </nav>
             </div>
@@ -70,13 +67,13 @@
                     </div>
                 </div>
                 <div class="footer-bottom">
-                     <p>&copy; 2025 [您的团队名称或项目名称] 版权所有</p>
+                     <p>&copy; {{ current_year }} AI Health Demo. All rights reserved.</p>
                 </div>
             </div>
         </footer>
 
-    </div> <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    </div> <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
     {% block scripts %}{% endblock %}
 </body>
 </html>

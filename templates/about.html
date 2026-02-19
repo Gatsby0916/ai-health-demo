@@ -1,16 +1,39 @@
 {% extends "base.html" %}
 
-{% block title %}关于我们 - AI健康管理平台{% endblock %}
-
-{% block page_title %}关于我们{% endblock %}
-
-{% block header_subtitle %}<p>了解我们的项目愿景与使命。</p>{% endblock %}
+{% block title %}About - AI Health Platform{% endblock %}
+{% block page_title %}About This Project{% endblock %}
+{% block header_subtitle %}<p>A practical AI assistant for everyday health habit support.</p>{% endblock %}
 
 {% block content %}
-    <h2>项目背景</h2>
-    <p>这里是关于我们项目的详细介绍内容... (待填充)</p>
-    <h2>我们的使命</h2>
-    <p>...</p>
-    <h2>我们的愿景</h2>
-    <p>...</p>
+  <div class="page-section">
+    <h2>Project Background</h2>
+    <p>
+      This demo was created to explore how large language models can provide clear,
+      behavior-focused health guidance for daily scenarios.
+    </p>
+  </div>
+
+  <div class="page-section">
+    <h2>What It Is</h2>
+    <p>
+      The platform accepts natural-language user input and returns structured lifestyle
+      recommendations around sleep, nutrition, activity, and stress management.
+    </p>
+  </div>
+
+  <div class="page-section">
+    <h2>Safety Boundary</h2>
+    <p>
+      This product does not provide diagnosis or treatment. It is designed for
+      educational and self-management support only.
+    </p>
+  </div>
+
+  <div class="page-section">
+    <h2>Roadmap</h2>
+    <p>
+      Next iterations will focus on stronger risk triage, better explainability,
+      and stricter evaluation of output quality.
+    </p>
+  </div>
 {% endblock %}
