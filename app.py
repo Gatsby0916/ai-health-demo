@@ -4,7 +4,7 @@ from pathlib import Path
 from typing import Tuple
 
 from dotenv import load_dotenv
-from flask import Flask, jsonify, render_template, request, url_for
+from flask import Flask, jsonify, render_template, request
 
 from config import load_settings
 from services.ai_service import DeepSeekHealthAdvisor
@@ -34,22 +34,22 @@ def _feature_cards():
         {
             "title": "Stress & Mood Support",
             "description": "Identify stress patterns and receive practical coping strategies for daily life.",
-            "icon": url_for("static", filename="images/icon_stress.png"),
+            "symbol": "S",
         },
         {
             "title": "Sleep Improvement",
             "description": "Get actionable sleep hygiene suggestions based on your routines and symptoms.",
-            "icon": url_for("static", filename="images/icon_sleep.png"),
+            "symbol": "Z",
         },
         {
             "title": "Nutrition Guidance",
             "description": "Receive balanced, realistic diet recommendations adapted to your context.",
-            "icon": url_for("static", filename="images/icon_diet.png"),
+            "symbol": "N",
         },
         {
             "title": "Activity Planning",
             "description": "Build sustainable movement habits with intensity and duration guidance.",
-            "icon": url_for("static", filename="images/icon_exercise.png"),
+            "symbol": "A",
         },
     ]
 

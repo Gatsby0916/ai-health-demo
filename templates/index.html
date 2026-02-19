@@ -35,7 +35,7 @@
     <div class="features-list">
       {% for feature in features %}
       <div class="feature-item card">
-        <img src="{{ feature.icon }}" alt="{{ feature.title }}" class="feature-icon">
+        <div class="feature-symbol" aria-hidden="true">{{ feature.symbol }}</div>
         <h3>{{ feature.title }}</h3>
         <p>{{ feature.description }}</p>
       </div>

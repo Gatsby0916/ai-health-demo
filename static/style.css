@@ -518,6 +518,20 @@ main .container li {
     opacity: 0.8;
 }
 
+.feature-symbol {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 15px auto;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--primary-color);
+    color: var(--white-color);
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 0.04em;
+}
+
 .feature-item h3 {
     margin-top: 0;
     margin-bottom: 10px;
@@ -562,6 +576,22 @@ main .container li {
     border: 4px solid var(--white-color);
     box-shadow: 0 3px 8px rgba(0,0,0,0.15);
     display: block;
+}
+
+.team-symbol {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: 0 auto 15px auto;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-hover-color));
+    color: var(--white-color);
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    border: 4px solid var(--white-color);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
 }
 
 .team-member-card h3 {
